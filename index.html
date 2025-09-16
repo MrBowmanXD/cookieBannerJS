@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Cookie Banner
+    </title>
+  </head>
+  <body>
+    <div class="cookies-banner">
+      <p>Se não queres cookies clica em "Rejeitar" caso contrário clica em "Aceitar".</p>
+      <!-- Change the text above to whatever suits you (the text is for the message of the consent box) -->
+      <button id="cookies-reject">Rejeitar</button>
+      <button id="cookies-accept">Aceitar</button>
+    </div>
+    <script>
+      const cookieBanner = document.querySelector(".cookies-banner");
+      if (localStorage.getItem("cookiesBannerApproved") === "true" || localStorage.getItem("cookiesBannerReject") === "true") {
+        cookieBanner.remove();
+      }
+
+      if (document.getElementById("cookies-reject")) {
+
+      document.getElementById("cookies-reject").addEventListener("click", function () {
+        // Code to remove cookies
+        if (localStorage.getItem("cookiesBannerReject") !== "true") {
+          localStorage.setItem("cookiesBannerReject", true);
+        }
+      if (localStorage.getItem("cookiesBannerReject") === "true" && localStorage.getItem("cookiesBannerApproved") === null) {
+        document.__defineGetter__("cookie", function() { return '';} );
+        document.__defineSetter__("cookie", function() {} );
+        cookieBanner.remove();
+      } else if (localStorage.getItem("cookiesBannerApproved") === "true") {
+        // do nothing
+      }
+        });
+      }
+
+      if (document.getElementById("cookies-accept")) {
+
+        document.getElementById("cookies-accept").addEventListener("click", function () {
+          localStorage.setItem("cookiesBannerApproved", true);
+        if (localStorage.getItem("cookiesBannerApproved") === "true" && localStorage.getItem("cookiesBannerReject") === null) {
+          // Code to add for google analytics for example (this is activated if user accepts cookies)
+          cookieBanner.remove();
+        }
+      })
+      };
+
+
+    </script>
+  </body>
+</html>
+
