@@ -21,16 +21,12 @@
       if (document.getElementById("cookies-reject")) {
 
       document.getElementById("cookies-reject").addEventListener("click", function () {
-        // Code to remove cookies
+        // Code to remove cookie banner
         if (localStorage.getItem("cookiesBannerReject") !== "true") {
           localStorage.setItem("cookiesBannerReject", true);
         }
       if (localStorage.getItem("cookiesBannerReject") === "true" && localStorage.getItem("cookiesBannerApproved") === null) {
-        document.__defineGetter__("cookie", function() { return '';} );
-        document.__defineSetter__("cookie", function() {} );
         cookieBanner.remove();
-      } else if (localStorage.getItem("cookiesBannerApproved") === "true") {
-        // do nothing
       }
         });
       }
