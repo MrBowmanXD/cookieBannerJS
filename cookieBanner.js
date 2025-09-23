@@ -1,6 +1,12 @@
 const cookieBanner = document.querySelector(".cookies-banner");
-if (localStorage.getItem("cookiesBannerApproved") === "true" || localStorage.getItem("cookiesBannerReject") === "true") {
-cookieBanner.remove();
+if (localStorage.getItem("cookiesBannerApproved") === "true") {
+    // Code if cookie Banner is approved
+    cookieBanner.remove();
+}
+
+if (localStorage.getItem("cookiesBannerReject") === "true") {
+    // Code if cookie Banner is rejected
+    cookieBanner.remove();
 }
 
 if (document.getElementById("cookies-reject")) {
